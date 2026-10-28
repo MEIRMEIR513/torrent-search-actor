@@ -1,0 +1,3 @@
+apify>=1.0.0
+playwright>=1.40.0
+nokk>=0.1.45a1

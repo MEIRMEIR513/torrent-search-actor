@@ -1,0 +1,53 @@
+{
+  "actorSpecification": 1,
+  "name": "torrent-search-actor",
+  "title": "Torrent Search Actor",
+  "description": "Search torrent sites (1337x, LimeTorrents) for torrents using NOKK to bypass Cloudflare",
+  "version": "0.0",
+  "input": {
+    "title": "Torrent Search Input",
+    "description": "Search for torrents on 1337x or LimeTorrents with NOKK to bypass Cloudflare protections",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "query": {
+        "type": "string",
+        "title": "🔍 Search query",
+        "description": "The search term to find torrents",
+        "default": "",
+        "editor": "textfield"
+      },
+      "max_results": {
+        "type": "integer",
+        "title": "📊 Max results",
+        "description": "Maximum number of results to return (1-100)",
+        "default": 10,
+        "minimum": 1,
+        "maximum": 100,
+        "editor": "number"
+      },
+      "site": {
+        "type": "string",
+        "title": "🌐 Torrent site",
+        "description": "Which torrent site to search",
+        "default": "1337x",
+        "enum": ["1337x", "limetorrents"],
+        "editor": "select"
+      },
+      "get_magnets": {
+        "type": "boolean",
+        "title": "🧲 Extract magnet links",
+        "description": "Whether to extract magnet links from detail pages (slower but more complete)",
+        "default": false,
+        "editor": "checkbox"
+      }
+    },
+    "required": ["query"]
+  },
+  "runners": [
+    {
+      "language": "python",
+      "baseImage": "apify/actor-python-base"
+    }
+  ]
+}
